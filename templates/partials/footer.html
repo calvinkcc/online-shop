@@ -1,0 +1,66 @@
+{% load i18n %}
+{% load staticfiles %}
+{% block mystyles %}
+<link rel="stylesheet" type="text/css" href="{% static "oscar/css/me.css" %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+    {% block footer %}
+        <footer class="page-footer" style="background-color: rgba(30,66,120,1); margin-top: 50px; padding-top:50px;">
+        <div class="container-fluid text-center text-md-left">
+          <div class="row">
+            <div class="col-md-3">
+              <h5 class=""><a href=""><img src="{% static 'me/KCCS-TECH-BOT.png' %}" width="212px" height="113px" alt="KCCS TECH Logo"></a></h5>
+              <p class="" style="color: #FDFEFE !important;">Leading technology and solutions to your doorsteps.</p>
+              <p class="" style="color: #FDFEFE !important;"><i class="fas fa-clock"></i> Business hours: Mon-Sun 9 A.M-9 P.M</p>
+              <p class="" style="color: #FDFEFE !important;"><i class="fas fa-phone"></i> Phone No. 646-975-9555 | Email: support@kccstech.com</p>
+              <p class="" style="color: #FDFEFE !important;">Connect With Us <a style="margin-left:15px;" href="https://www.facebook.com/kccstech/"><i class="fab fa-facebook"></i></a><a style="margin-left:15px; color:#1dcaff;" href="https://twitter.com/kccstechco"><i class="fab fa-twitter"></i></a><a style="margin-left:15px; color:#FF0000;" href="https://www.youtube.com/channel/UCmHMyRkl3X6hUC46Gj3BTMg?view_as=subscriber"><i class="fab fa-youtube"></i></a></p>
+            </div>
+            <div class="col-md-3">
+              <h1 class="" style="color: #FDFEFE !important;"><b>Quick Access</b></h1>
+              <div class="row">
+                <ul class="links bullet-me">
+                    <li><a href="" style="color: #FDFEFE !important;">Contact Us</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">RMA Process</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">FAQ</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">LCD Buyback</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">Other Services</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h1 class="" style="color: #FDFEFE !important;"><b>My Account</b></h1>
+              <div class="row">
+                  <ul class="links bullet-me">
+                    <li><a href="" style="color: #FDFEFE !important;">Order History</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">My Account</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;"></a></li>
+                    <li><a href="" style="color: #FDFEFE !important;"></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <h1 class="" style="color: #FDFEFE !important;"><b>Policies</b></h1>
+              <div class="row">
+                  <ul class="links bullet-me">
+                    <li><a href="" style="color: #FDFEFE !important;">Privacy Policy</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">Trademark Disclaimer</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">Warranty Policy</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">Terms & Conditions</a></li>
+                    <li><a href="" style="color: #FDFEFE !important;">Shipping & Returns Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright text-center py-1">
+            <hr style="background-color:#888d90;">
+            <p class="text-center" style="color:#FDFEFE">All trademarks are properties of their respective holders. KccsTech is a third party replacement part wholesaler and does not own or make claim to the trademarks on this website.</p>
+            <p class="text-center" style="color:#FDFEFE">Copyright &copy; KccsTech 2018 All Rights Reserved | Template Design & Development by <a href="" style="color:#1dcaff">KccsTech</a></p>
+
+          </div>
+        </div>
+      </footer>
+    {% endblock %}
+
+    <!--removed text-left from h1 elements-->
+    <!--added bullet-me to ul elements-->

@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+{% load promotion_tags %}
+
+{% comment %}
+Keep the same header and footer as the standard layout template but override the
+main content area to split it into a sidebar and a content block
+{% endcomment %}
+
+{% block content_wrapper %}
+<div class="container-fluid page">
+    <div class="page_inner">
+        <div class="nav-me-2 " id="mini-me" style="background-color: rgba(30,66,120,1) !important; transition: all 2s !important; margin-top: 10px">
+            <div class="shift-me-right"><i id="bar-tog-me-2" class="fas fa-bars snd-bar-me" onclick="togMe2()"></i></div>
+            <div class="container-flex-me-two" style="width: 100%;">
+
+              <div class="dropdown-item flex-grow-me-md-inv center-flex-me color-blue-me">
+                <div>Apple</div>
+                <div class="dropdown-menu" id="toggleDropDown" style="position: absolute; top: 255px; left: 22%; transform: translateX(-50%);">
+                  <div class="dropdown-menu-column">
+                    <div class="dropdown-menu-column-header">Hello</div>
+                    <div class="dropdown-menu-column-item">Item</div>
+                  </div>
+                  <div class="dropdown-menu-column">
+                    <div class="dropdown-menu-column-header">Hello</div>
+                    <div class="dropdown-menu-column-item">Item</div>
+                    <div class="dropdown-menu-column-item">Item</div>
+                    <div class="dropdown-menu-column-item">Item</div>
+                  </div>
+                  <div class="dropdown-menu-column">
+                    <div class="dropdown-menu-column-header">Hello</div>
+                    <div class="dropdown-menu-column-item">Item</div>
+                  </div>
+                </div>
+              </div>
+
+                <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Samsung</div>
+                <div class="flex-grow-me-md-inv center-flex-me color-blue-me">LG</div>
+                <div class="dropdown-item flex-grow-me-md-inv center-flex-me color-blue-me">
+                  <div>Motorola</div>
+                  <div class="dropdown-menu" id="toggleDropDown" style="position: absolute; top: 255px; left: 50%; transform: translateX(-50%);">
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Others</div>
+                <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Equipment</div>
+                <div class="dropdown-item flex-grow-me-md-inv center-flex-me color-blue-me">
+                  <div>Accessories</div>
+                  <div class="dropdown-menu" id="toggleDropDown" style="position: absolute; top: 255px; left: 76%; transform: translateX(-50%);">
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                    <div class="dropdown-menu-column">
+                      <div class="dropdown-menu-column-header">Hello</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                      <div class="dropdown-menu-column-item">Item</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        {% block breadcrumbs %}{% endblock %}
+        <div class="row">
+
+            <aside class="sidebar col-sm-4 col-md-3">
+                {# Render promotions at the top of the left-hand sidebar #}
+                <div id="promotions_left">
+                    {% for promotion in promotions_left %}
+                        {% render_promotion promotion %}
+                    {% endfor %}
+                </div>
+                {% block column_left %}{% endblock %}
+            </aside>
+
+            <div class="col-sm-8 col-md-9">
+                {% block header %}
+                <div class="page-header action">
+                    <h1>{% block headertext %}{% endblock %}</h1>
+                </div>
+                {% endblock %}
+
+                {% include "partials/alert_messages.html" %}
+
+                <div id="promotions">
+                    {% for promotion in promotions_page %}
+                        {% render_promotion promotion %}
+                    {% endfor %}
+                </div>
+
+                {% block content %}{% endblock %}
+            </div>
+
+        </div><!-- /row -->
+    </div><!-- /page_inner -->
+</div><!-- /container-fluid -->
+<script>
+    $('.carousel-me').slick();
+    function togMe2(){
+        var element = document.getElementById("mini-me");
+        element.classList.toggle('minimize-me');
+        console.log('hello')
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% load i18n %}
+
+<form method="get" action="{% url 'search:search' %}" class="navbar-form navbar-right">
+    <div class="form-group searchbar-metwo" style="background-image: url('/static/me/Search.png'); background-size: 100% 100%; padding: 4px; background-repeat: no-repeat;">
+        {{ search_form.q }}
+    </div>
+    <input type="submit" value="{% trans "Search" %}" class="btn btn-default" />
+</form>

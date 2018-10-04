@@ -1,0 +1,29 @@
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
+{% load static %}
+{% block mystyles %}
+{% load thumbnail %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "oscar/css/me.css" %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+<div class="info-bar-me container-flex-me">
+    <div class="flex-grow-me-md-inv">
+        <a href="/"><image class="brand-logo" src="{% static 'me/KCCS-TECH-TOP.png' %}"></image></a>
+    </div>
+    <div class="flex-grow-me-search center-flex-me" style="flex-grow: 100">
+        {% include "partials/search.html" %}
+    </div>
+    <div class="flex-grow-me-md-inv right-flex-me align-vert-me">
+        <span>
+            {% block mini_basket %}
+            {% include "partials/mini_basket.html" %}
+            {% endblock %}
+        </span>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load i18n %}
+{% load promotion_tags %}
+{% load category_tags %}
+{% load staticfiles %}
+
+{% block layout %}
+{% include 'partials/nav_accounts.html' %}
+{% include 'partials/nav_primary.html' %}
+
+    <header class="header container-fluid">
+        <div class="page_inner">
+            <div class="nav-me-2 " id="mini-me" style="background-color: rgba(30,66,120,1) !important; padding: 20px; transition: all 2s !important; margin-top: 10px">
+                <div class="shift-me-right"><i id="bar-tog-me-2" class="fas fa-bars snd-bar-me" onclick="togMe2()"></i></div>
+                <div class="container-flex-me-two" style="width: 100%;">
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Apple</div>
+                    <!--<div class="flex-grow-me-md-inv center-flex-me color-blue-me">|</div>-->
+                    <!--<div class="flex-grow-me-md-inv center-flex-me color-blue-me">More Coming Soon</div>-->
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Samsung</div>
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">LG</div>
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Motorola</div>
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Others</div>
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Equipment</div>
+                    <div class="flex-grow-me-md-inv center-flex-me color-blue-me">Accesories</div>
+                </div>
+                <!--<div class="container-flex-me" style="width: 95%; border-bottom: 3px solid rgba(30,66,120,1);"></div>-->
+            </div>
+            <div class="row">
+            </div><!-- /row -->
+        </div>
+        <br><br>
+        {% block checkout_nav %}{% endblock %}
+    </header><!-- /header -->
+
+    <div class="container-fluid page">
+       <div class="page_inner">
+            {% include 'partials/alert_messages.html' %}
+
+            <div class="sub-header">
+                <h1>{% block checkout_title %}{% endblock %}</h1>
+            </div>
+
+            <!-- The main nav on checkout pages contain links to modal flatpages -->
+            {% block modal %}
+                {% load flatpages %}
+                {% get_flatpages '/order/' as flatpages %}
+                {% for page in flatpages %}
+                <div id="{{ page.title|slugify }}" class="modal hide fade">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3>{{ page.title }}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="large-content">
+                            {{ page.content|safe }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+
+            <div id="promotions">
+                {% for promotion in promotions_page %}
+                    {% render_promotion promotion %}
+                {% endfor %}
+            </div>
+        </div><!-- /page_inner -->
+    </div>
+    <script>
+        $('.carousel-me').slick();
+        function togMe2(){
+            var element = document.getElementById("mini-me");
+            element.classList.toggle('minimize-me');
+            console.log('hello')
+        }
+    </script>
+    {% include "partials/footer_checkout.html" %}
+    {% include 'partials/footer.html' %}
+{% endblock %}

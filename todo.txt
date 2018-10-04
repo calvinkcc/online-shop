@@ -1,0 +1,39 @@
+Legal pages and customer services pages
+-terms and conditions page
+-private policy page
+-return policy
+-shipping policy
+-RMA
+-warranty page
+-trademark disclaimer
+-Faq page
+
+
+
+
+Features
+-subscriber list
+-return for store credit
+
+Change dashboard brand name to kccstech
+-Make sure there is margin and padding in all contents
+-Mobile view should be good and nothing should be hidden
+-Cart and checkout should be based on USD
+-Check out page needs to be our logo instead of oscar
+-Make sure all payment system is up and running
+-Leave the background as white instead of gray
+-The carousel slide should be right below attaching to the third navbar(categories) and width of all contents should be the same
+-The container backgrounds should not be blue
+-Only footer and navbar should have a color
+
+
+TODO- 9/30/18
+-Try the checkout and also change the checkout logo of oscar to our own
+-The branding navbar squish out the search and other contents on mobile view.
+- Phone number should be move to the top navbar and always show out regardless of screen width
+-Other contents on the top navbar should be register/login, changing language on mobile view, then the rest will be collapsed.
+-Make page background as white, instead of gray
+-Category navbar should display on every page just like the other 2 navbars
+-the brand and cateogry navbar should be separated from the breabcombs and body page
+-MOST IMPORTANT- Try to add produts as a featured list or another list. I don't believe it works even though we have included the hmtl files.
+-IMPORTANT- Category navbar should be able to hav dropdowns

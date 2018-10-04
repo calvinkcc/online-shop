@@ -1,0 +1,126 @@
+{% load i18n %}
+{% load static %}
+{% block mystyles %}
+<link rel="stylesheet" type="text/css" href="{% static "oscar/css/me.css" %}" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% endblock %}
+
+<div id="nav-me" class="navbar-me extra-height-me">
+    <div id="innernav" class="container-flex-me">
+        <div class="flex-grow-me-md gold-me">
+            {% block nav_account_languages %}
+            {% if LANGUAGES|length > 1 %}
+                <form class="" action="{% url 'set_language' %}" method="post">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ language_neutral_url_path }}" />
+                    <div class"">
+                        <select name="language" class="dropdown-me" style="color:#FDFEFE">
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE%} selected="selected"{% endif %}>
+                                    {{ language.name_local }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <button class="gold-me nav-btn-me" type="submit" data-loading-text="{% trans 'Submitting...' %}" style="color:#FDFEFE">{% trans "Go" %}</button>
+                    </div>
+
+                </form>
+            {% endif %}
+            {% endblock %}
+        </div>
+        <div class="flex-grow-me-md center-flex-me gold-me">
+            <div class="list-me"><a style="color:#FDFEFE">Business hours: Mon-Sun 9 A.M-9 P.M - Remote support is 24/7</a></div>
+        </div>
+        <div class="flex-grow-me-md right-flex-me gold-me">
+                <div><a style="color: white;">Phone No. 646-975-9555</a></div>
+                <div class="list-me"><a class="getlink" href="/about-us/" style="color:#FDFEFE">About Us</a></div>
+                <div class="list-me-me"><a class="getlink" href="/contact-us/" style="color:#FDFEFE">Contact Us</a></div>
+                <div class="list-me"><a class="getlink" style="color:#FDFEFE">Blog</a></div>
+                {% if user.is_authenticated %}
+                {% block nav_account_navbar_authenticated %}
+                         {% if num_unread_notifications > 0 %}
+                            {# If user has new notifications - we change account link to go to inbox #}
+                            <div id="moveacc">
+                                <a class="getlink" href="{% url 'customer:notifications-inbox' %}">
+                                <i class="icon-user"></i>
+                                {% trans "Account" %}
+                                <span class="">{{ num_unread_notifications }}</span></a>
+                            </div>
+                        {% else %}
+                            <div id="moveacc" class=""><a class="getlink" href="{% url 'customer:summary' %}" style="color:#FDFEFE"><i class="icon-user"></i> {% trans "Account" %}</a></div>
+                        {% endif %}
+                    {% if user.is_staff or perms.partner.dashboard_access %}
+                        <div id="movedash"><a class="getlink" href="{% url 'dashboard:index' %}" style="color:#FDFEFE"><i class="icon-list-ul"></i> {% trans "Dashboard" %}</a></div>
+                    {% endif %}
+                    <div id="movelogout" class=""><a class="getlink" id="logout_link" href="{% url 'customer:logout' %}" style="color:#FDFEFE"><i class="icon-signout"></i> {% trans "Logout" %}</a></div>
+                {% endblock %}
+                {% else %}
+                    <div id="movelogin" class=""><a class="getlink" id="login_link" href="{% url 'customer:login' %}" style="color:#FDFEFE"><i class="icon-signin"></i> {% trans "Login or register" %}</a></div>
+                {% endif %}
+                <div class="toggle-me" onmouseover="circleMe()" onmouseout="barMe()" onclick="togMe()"><a>
+                    <span class=""><i id="bar-tog-me" class="fas fa-bars" style="color:white;"></i></span>
+                </a></div>
+        </div>
+    </div>
+    <div id="menunav" class="container-block-me">
+        <div class="center-block-me"><a class="getlink" href="/contact-us/" style="color:#FDFEFE">Contact Us</a></div>
+        <div class="center-block-me"><a class="getlink" href="/about-us/" style="color:#FDFEFE">About Us</a></div>
+        <div class="center-block-me"><a class="getlink" style="color:#FDFEFE">Blog</a></div>
+    </div>
+</div>
+<script>
+var me;
+var meme;
+var mememe;
+var memememe;
+var ok;
+var auth;
+var acc;
+var l;
+var menu;
+var bool = false;
+var screen;
+
+(function(){
+    auth = '{{ user }}';
+    me = "{{ products }}"
+    meme = "{{ me }}"
+    mememe = "{{ range }}"
+    memememe = "{{ bob }}"
+    ok = "{{ ok }}"
+    menu = document.getElementById('menunav')
+    screen = window.innerWidth
+    try {
+        // l = document.getElementById('movelogout');
+        acc = document.getElementById('moveacc');
+        bool = true;
+    }
+    catch(e) {
+        // l = document.getElementById('movelogin');
+    }
+    if (screen < 720){
+        // menu.appendChild(l);
+        // l.classList.add('center-block-me')
+        if (bool === true){
+            menu.appendChild(acc);
+            acc.classList.add('center-block-me')
+        }
+    }
+
+})();
+function circleMe(){
+    var element = document.getElementById("bar-tog-me");
+    element.className = 'far fa-circle';
+    console.log('c')
+}
+function barMe(){
+    var element = document.getElementById("bar-tog-me");
+    element.className = 'fas fa-bars';
+    console.log('b')
+}
+function togMe(){
+    var element = document.getElementById("nav-me");
+    element.classList.toggle('collapseMe')
+}
+</script>

@@ -43,9 +43,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'widget_tweaks',
-] + get_core_apps(['yourappsfolder.promotions'])
+    'paypal',
+    'stripe',
+] + get_core_apps(['yourappsfolder.checkout'])
 
+PAYPAL_API_USERNAME = 'calvinkcc0-facilitator_api1.gmail.com'
+PAYPAL_API_PASSWORD = 'JWKASC5LH3K3RB29'
+PAYPAL_API_SIGNATURE = 'A.Uc-kraUyFHKmQHgO7fZfqdXhGkAMvrwwi4MLl-1DzlyI6n-emeelB5'
+PAYPAL_CURRENCY = 'USD'
 SITE_ID = 1
+
+STRIPE_SECRET_KEY = "sk_test_D6hDVP3hjjwFy4hp8puvyiOv"
+STRIPE_PUBLISHABLE_KEY = "pk_test_mJFPanxRUx55cVZ1Zb2IiAQh"
+STRIPE_CURRENCY = "USD"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -152,7 +162,7 @@ USE_L10N = True
 USE_TZ = True
 
 OSCAR_DEFAULT_CURRENCY = '$'
-OSCAR_CURRENCY_LOCALE = 'us'
+OSCAR_CURRENCY_LOCALE = 'US'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -178,3 +188,19 @@ OSCAR_ORDER_STATUS_PIPELINE = {
     'Being processed': ('Processed', 'Cancelled',),
     'Cancelled': (),
 }
+from django.utils.translation import ugettext_lazy as _
+OSCAR_DASHBOARD_NAVIGATION.append(
+    {
+        'label': _('PayPal'),
+        'icon': 'icon-globe',
+        'children': [
+            {
+                'label': _('PayFlow transactions'),
+                'url_name': 'paypal-payflow-list',
+            },
+            {
+                'label': _('Express transactions'),
+                'url_name': 'paypal-express-list',
+            },
+        ]
+    })

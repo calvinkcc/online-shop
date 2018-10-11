@@ -1,9 +1,12 @@
 {% load i18n %}
 {% load staticfiles %}
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-gb" }}" class="no-js">
     <head>
-        <title>{% block title %}{{ shop_name }} - {{ shop_tagline }}{% endblock %}</title>
+        <title>{% block title %}KccsTech - {{ shop_tagline }}{% endblock %}</title>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <meta name="created" content="{% now "jS M Y h:i" %}" />

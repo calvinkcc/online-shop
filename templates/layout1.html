@@ -4,7 +4,6 @@
 {% load category_tags %}
 {% load i18n %}
 
-
 {% block styles %}
     {% comment %}
         If you are developing Oscar's CSS, or overriding Oscar's CSS
@@ -25,7 +24,7 @@
     {% include "partials/nav_accounts.html" %}
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container-fluid">
+   <header class="header container-fluid">
         <div style="margin-bottom:20px;">
         {% block navigation %}
             {% include "partials/nav_primary.html" %}
@@ -33,7 +32,7 @@
         </div>
     </header>
 
- <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;")>
+ <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;">
     <div class="container-fluid">
         <div class="navbar-header pull-right">
             {# This is used in mobile view #}
@@ -41,8 +40,6 @@
                 <i class="glyphicon glyphicon-align-center" style="color:white;"></i>
             </a>
         </div>
-
-
         <div class="navbar-collapse primary-collapse collapse">
             {% block nav_dropdown %}
                 <ul id="browse" class="nav navbar-nav">
@@ -81,89 +78,6 @@
         </div><!-- /navbar-collapse -->
     </div>
 </div><!-- /navbar -->
-
-
-<div id="my-pics" class="carousel slide" data-ride="carousel">
-
-<!-- Indicators -->
-<ol class="carousel-indicators" style="position relative; left: 29.75%;">
-<li data-target="#my-pics" data-slide-to="0" class="active"></li>
-<li data-target="#my-pics" data-slide-to="1"></li>
-<li data-target="#my-pics" data-slide-to="2"></li>
-</ol>
-
-<!-- Content -->
-<div class="carousel-inner" role="listbox">
-
-<!-- Slide 1 -->
-<div class="item active">
-<img src="{% static 'me/equip-2.JPG' %}" style="width: 100%; height: 500px; object-fit: cover;">
-  <div class="carousel-caption text-left">
-                <h1><strong>YEAAAAAAAAAAAA</strong></h1>
-                <h1><strong>FILLERRRRRRRRR</strong></h1>
-                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>
-              </div>
-</div>
-
-<!-- Slide 2 -->
-<div class="item">
-<img src="{% static 'me/equip-1.jpg' %}" alt="Rob Roy Glacier" style="width: 100%; height: 500px; object-fit: cover;">
-<div class="carousel-caption text-left">
-                <h1><strong>YEAAAAAAAAAAAA</strong></h1>
-                <h1><strong>FILLERRRRRRRRR</strong></h1>
-                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>
-              </div>
-</div>
-
-<!-- Slide 3 -->
-<div class="item">
-<img src="{% static 'me/store-front.jpg' %}" alt="Longtail boats at Phi Phi" style="width: 100%; height: 500px; object-fit: cover;">
-<div class="carousel-caption text-left">
-                <h1><strong>YEAAAAAAAAAAAA</strong></h1>
-                <h1><strong>FILLERRRRRRRRR</strong></h1>
-                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>
-              </div>
-</div>
-
-</div>
-
-<!-- Previous/Next controls -->
-<a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
-<span class="icon-prev" aria-hidden="true"></span>
-<span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#my-pics" role="button" data-slide="next">
-<span class="icon-next" aria-hidden="true"></span>
-<span class="sr-only">Next</span>
-</a>
-
-</div>
-
-<div class="" style="margin-top: -40px; padding-bottom: 10px !important; padding-top: 10px;background-color: rgba(30,66,120,1);">
-    <div class="container-flex-me-3" style="">
-        <div class="flex-grow-me-md container-flex-me-4">
-            <image src="{% static 'me/delivery-truck.svg' %}" style="height: 50px; width: 50px;"></image>
-            <div style="margin-left: 15px;">
-                <div>SAME DAY SHIPPING FOR US</div>
-                <div>free shipping on all orders above $100</div>
-            </div>
-        </div>
-        <div class="flex-grow-me-md center-flex-me container-flex-me-4">
-            <image src="{% static 'me/money-back.svg' %}" style="height: 50px; width: 50px;"></image>
-            <div style="margin-left: 15px;">
-                <div>BUY BACK PROGRAM</div>
-                <div>Trade in your devices and earn today</div>
-            </div>
-        </div>
-        <div class="flex-grow-me-md right-flex-me container-flex-me-4">
-            <image src="{% static 'me/support.svg' %}" style="height: 50px; width: 50px;"></image>
-            <div style="margin-left: 15px;">
-                <div>ON DEMAND SUPPORT</div>
-                <div>Fast responses and resolutions to all problems</div>
-            </div>
-        </div>
-    </div>
-</div>
 
     {# Main content of page - other layout templates may override this block #}
     {% block content_wrapper %}

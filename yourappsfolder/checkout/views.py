@@ -2,6 +2,7 @@ from django.conf import settings
 from oscar.core.loading import get_model
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render,redirect
 
 from oscar.apps.checkout.views import PaymentDetailsView as CorePaymentDetailsView
 from yourappsfolder.checkout.facade import Facade
@@ -9,6 +10,7 @@ from yourappsfolder.checkout.facade import Facade
 from . import PAYMENT_METHOD_STRIPE, PAYMENT_EVENT_PURCHASE, STRIPE_EMAIL, STRIPE_TOKEN
 
 from yourappsfolder.checkout import forms
+from .models import Contact
 
 SourceType = get_model('payment', 'SourceType')
 Source = get_model('payment', 'Source')
@@ -55,3 +57,16 @@ class PaymentDetailsView(CorePaymentDetailsView):
 
     def payment_metadata(self, order_number, total, **kwargs):
         return {'order_number': order_number}
+
+def save_contact_form(request):
+        if request.method == 'POST':
+            if request.POST.get('name') and request.POST.get('email') and request.POST.get('phone') and request.POST.get('comment') :
+                post=Contact()
+                post.name= request.POST.get('name')
+                post.email= request.POST.get('email')
+                post.phone= request.POST.get('phone')
+                post.comment= request.POST.get('comment')
+                post.save()
+                return redirect('/contact-us/')
+        else:
+                return render(request,'/contact-us/')

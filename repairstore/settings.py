@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'paypal',
     'stripe',
-] + get_core_apps(['yourappsfolder.checkout'])
+] + get_core_apps(['yourappsfolder.checkout','yourappsfolder.shipping','yourappsfolder.dashboard'])
 
 PAYPAL_API_USERNAME = 'calvinkcc0-facilitator_api1.gmail.com'
 PAYPAL_API_PASSWORD = 'JWKASC5LH3K3RB29'
@@ -56,6 +56,8 @@ SITE_ID = 1
 STRIPE_SECRET_KEY = "sk_test_D6hDVP3hjjwFy4hp8puvyiOv"
 STRIPE_PUBLISHABLE_KEY = "pk_test_mJFPanxRUx55cVZ1Zb2IiAQh"
 STRIPE_CURRENCY = "USD"
+
+OSCAR_SHOP_TAGLINE = 'Wholesale Cell Phone Repair Parts And Accessories'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -204,3 +206,14 @@ OSCAR_DASHBOARD_NAVIGATION.append(
             },
         ]
     })
+OSCAR_DASHBOARD_NAVIGATION += [
+    {
+        'label': 'Shipping',
+        'children': [
+            {
+                'label': 'Shipping',
+                'url_name': 'dashboard:shipping-method-list',
+            },
+         ]
+    },
+]

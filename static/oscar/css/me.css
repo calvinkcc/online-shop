@@ -213,11 +213,11 @@ a:hover{
 }
 .align-vert-me{
     position: relative;
-    top: 45%;
+    top: 25%;
 }
 
 
-/*@media (min-width: 721px) {*/
+@media (min-width: 721px) {
   /*.dropdown-menu {*/
   /*  display: flex;*/
   /*  flex-direction: row;*/
@@ -253,7 +253,7 @@ a:hover{
   /*  height: auto;*/
   /*  width: auto;*/
   /*}*/
-/*}*/
+}
 
 @media only screen and (max-width: 1080px) {
     .gold-me > div.list-me > a {

@@ -1,0 +1,29 @@
+        static/megamenu-js-master/
+        templates/catalogue/detail.html
+        templates/dashboard/contacts/
+        templates/dashboard/index.html
+        templates/flatpages/contact.html
+        templates/flatpages/contact_us.html
+        templates/offer/detail.html
+        templates/partials/nav_custom.html
+        templates/registration/
+        yourappsfolder/checkout/admin.py
+        yourappsfolder/checkout/models.py
+        yourappsfolder/checkout/views.py
+        yourappsfolder/dashboard/views.py
+
+
+ /repairestore/settings.py ] + get_core_apps(['yourappsfolder.checkout','yourappsfolder.shipping','yourappsfolder.dashboard'])
+ /repairestore/urls.py added url 
+ /repairstore/static/oscar/css changes in style.css
+ /repairstore/static  added megamenu library for navigation
+ /repairstore/yourappsfolder/dashboard  dashboard app override 
+ added a admin.py for getting contact details in database
+ used models.py for contact_us page
+ created new nav_custom.html in /templates/partials and added in layout and layout1.html
+ changed button color ->contact us page ->added css in ->oscar ->css ->style.css
+ added contact_list.html in /templates/dashboard/contact directory for show new contacts in oscar dashboard
+ added index.html in /templates/dashboard in  directory for show new contacts table in dashboard oscar
+ made some changes in megamenu css for according to our site navigation bar
+
+

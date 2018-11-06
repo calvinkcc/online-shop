@@ -17,12 +17,16 @@ from django.urls import path, include, re_path
 from oscar.app import application
 from paypal.payflow.dashboard.app import application as payflow
 from paypal.express.dashboard.app import application as express_dashboard
+from yourappsfolder.checkout.views import save_contact_form
+from yourappsfolder.dashboard.views import ContactListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('', application.urls),
+    re_path(r'^contact/add/$',save_contact_form,name='create_contact'),
+    re_path(r'^dashboard/contacts-list/$',ContactListView.as_view(),name='contact_list'),
     re_path(r'^checkout/paypal/', include('paypal.express.urls')),
     # Dashboard views for Payflow Pro
     re_path(r'^dashboard/paypal/payflow/', payflow.urls),

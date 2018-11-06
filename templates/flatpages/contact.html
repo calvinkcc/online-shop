@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-6 left-contact">
+        <div class="row">
+            <div class="col-md-12 contact-map" style="margin-left: 10%;">
+                <iframe width="100%" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112169.01972734577!2d77.13543850714424!3d28.531246368878417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1e653c66bced%3A0x63d946b2f950bd53!2sSpring+House!5e0!3m2!1sen!2sin!4v1539765335178" width="450" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-md-12"><br>
+                <div class="contact-info-text">
+                    <div class="row">
+                        <h2 class="text-center contact-div-head">Contact Details</h2>
+                            <div class="col-md-12 text-center">
+                                <p ><b>Business hours :</b><span> Mon-Sun 9 A.M-9 P.M</span></p>
+                                <p ><b>Phone :</b><span>646-975-9555</span></p>
+                                <p ><b>Email :</b><span>support@kccstech.com</span></p>
+                                <p><b>Brooklyn, NY</b></p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact form -->
+    <div class="col-md-6 right-contact">
+        <form class="form-horizontal" action="{% url 'create_contact' %}" method="POST">{% csrf_token %}
+            <div class="form-group contact-form-margin">
+              <label class=" col-sm-3 contact-ele" for="email">Name<span>*</span></label>
+              <div class="col-sm-6">
+                <input type="text" name="name" class="form-control">
+              </div>
+            </div>
+            <div class="form-group contact-form-margin">
+              <label class=" col-sm-3 contact-ele" for="pwd">Email<span>*</span></label>
+              <div class="col-sm-6">
+                <input type="email" name="email" class="form-control">
+              </div>
+            </div>
+            <div class="form-group contact-form-margin">
+                <label class=" col-sm-3 contact-ele" for="pwd">Telephone<span>*</span></label>
+                <div class="col-sm-6">
+                    <input type="text" name="phone" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group contact-ele contact-form-margin">
+                <label class="col-sm-11 contact-ele" for="pwd">Message<span>*</span></label><br>
+                    <div class="input-box col-sm-10 input-textarea">
+                        <textarea name="comment" id="comment" title="Comment"  class="required-entry input-text contact-textarea" cols="5" rows="5"></textarea>
+                    </div>
+            </div>
+
+            <div class="form-group contact-form-margin">
+              <div class="col-sm-10">
+                <button type="submit" value="Post" class="btn contact-btn">Get In Touch &nbsp;<i class="fa fa-arrow-right" style="font-size:15px;color: white;"></i>
+                </button>
+              </div>
+            </div>
+        </form>
+    </div>
+    <!-- contact form / -->
+</div>

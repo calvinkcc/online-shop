@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{% load promotion_tags %}
+{% load category_tags %}
+{% load i18n %}
+<div class="menu-container">
+  <div class="menu category_menu_bg">
+    <ul>
+        {% category_tree depth=4 as tree_categories %}
+        {% if tree_categories %}
+            {% for tree_category, info in tree_categories %}
+                {% if info.has_children %}
+                <li><a href="{{ tree_category.get_absolute_url }}">{{tree_category.name}}<i class="fas fa-angle-down" style="padding-left:5px;"></i></a>
+                <ul>
+                {% else %}
+                <li><a href="{{ tree_category.get_absolute_url }}"> {{tree_category.name}}</a></li>
+                {% endif %}
+                {% for close in info.num_to_close %}
+                </ul>
+                </li>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    </ul>
+  </div>
+</div>

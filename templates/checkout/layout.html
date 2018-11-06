@@ -6,12 +6,21 @@
 
 {% block layout %}
 {% include 'partials/nav_accounts.html' %}
-{% include 'partials/nav_primary.html' %}
-
+<header class="header container-fluid">
+        <div style="margin-bottom:20px;">
+        {% block navigation %}
+            {% include "partials/nav_primary.html" %}
+        {% endblock %}
+        </div>
+</header>
+<div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;")>
+    <div class="container-fluid">
+        {% include "partials/nav_custom.html" %}
+    </div>
+</div>
 
     <header class="header container-fluid">
         <div class="page_inner">
-
         {% block checkout_nav %}{% endblock %}
     </header><!-- /header -->
 

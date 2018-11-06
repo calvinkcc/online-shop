@@ -20,7 +20,7 @@
               <h1 class="" style="color: #FDFEFE !important;"><b>Quick Access</b></h1>
               <div class="row">
                 <ul class="links bullet-me">
-                    <li><a href="" style="color: #FDFEFE;">Contact Us</a></li>
+                    <li><a href="/contact-us/" style="color: #FDFEFE;">Contact Us</a></li>
                     <li><a href="" style="color: #FDFEFE;">RMA Process</a></li>
                     <li><a href="" style="color: #FDFEFE;">FAQ</a></li>
                     <li><a href="" style="color: #FDFEFE;">LCD Buyback</a></li>
@@ -32,8 +32,8 @@
               <h1 class="" style="color: #FDFEFE;"><b>My Account</b></h1>
               <div class="row">
                   <ul class="links bullet-me">
-                    <li><a href="" style="color: #FDFEFE;">Order History</a></li>
-                    <li><a href="" style="color: #FDFEFE;">My Account</a></li>
+                    <li><a href="{% url 'customer:order-list' %}" style="color: #FDFEFE;">Order History</a></li>
+                    <li><a href="{% url 'customer:summary' %}" style="color: #FDFEFE;">My Account</a></li>
                     <li><a href="" style="color: #FDFEFE;"></a></li>
                     <li><a href="" style="color: #FDFEFE;"></a></li>
                 </ul>
@@ -46,10 +46,11 @@
                     <li><a href="" style="color: #FDFEFE;">Privacy Policy</a></li>
                     <li><a href="" style="color: #FDFEFE;">Trademark Disclaimer</a></li>
                     <li><a href="" style="color: #FDFEFE;">Warranty Policy</a></li>
-                    <li><a href="" style="color: #FDFEFE;">Terms & Conditions</a></li>
+                    <li><a href="/terms-conditions/" style="color: #FDFEFE;">Terms & Conditions</a></li>
                     <li><a href="" style="color: #FDFEFE;">Shipping & Returns Policy</a></li>
                 </ul>
               </div>
+              <img src="https://www.paypalobjects.com/webstatic/mktg/logo/PP_AcceptanceMarkTray-NoDiscover_243x40.png" alt="Buy now with PayPal" />
             </div>
           </div>
           <div class="footer-copyright text-center py-1">

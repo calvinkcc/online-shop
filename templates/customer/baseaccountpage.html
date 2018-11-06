@@ -1,5 +1,4 @@
 {% extends "baseaccountpage_layout.html" %}
-
 {% load i18n %}
 
 {% block title %}
@@ -16,10 +15,12 @@
         <li>
             <a href="{% url 'customer:summary' %}">{% trans 'Account' %}</a>
         </li>
-        {% block extra_breadcrumbs %}{% endblock %}
+        {% block extra_breadcrumbs %}
+        {% endblock %}
         <li class="active">{{ page_title }}</li>
     </ul>
 {% endblock %}
+
 
 {% block headertext %}{{ page_title }}{% endblock %}
 
@@ -32,5 +33,6 @@
 {% endblock %}
 
 {% block content %}
-    {% block tabcontent %}{% endblock tabcontent %}
+    {% block tabcontent %}
+    {% endblock tabcontent %}
 {% endblock content %}

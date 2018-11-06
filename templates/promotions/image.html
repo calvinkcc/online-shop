@@ -1,0 +1,7 @@
+{% if promotion.image %}
+    {% if promotion.link_url %}
+        <a href="{{ promotion.link_url }}"><img class="img-responsive" src="{{ promotion.image.url }}" title="{{ promotion.name }}" /></a>
+    {% else %}
+        <img class="img-responsive" src="{{ promotion.image.url }}" title="{{ promotion.name }}" />
+    {% endif %}
+{% endif %}

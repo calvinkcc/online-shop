@@ -1,0 +1,60 @@
+{% extends "checkout/checkout.html" %}
+{% load i18n %}
+{% load static %}
+
+
+{% block title %}
+    {% trans "Billing address" %} | {{ block.super }}
+{% endblock %}
+
+{% block checkout_nav %}
+    {% include 'checkout/nav.html' with step=1 %}
+{% endblock %}
+
+{% block checkout_title %}{% trans "Billing address" %}{% endblock %}
+
+{% block order_contents %}{% endblock %}
+
+<!-- Block shipping_address is used as block billing_address -->
+{% block shipping_address %}
+
+<script src="{% static 'oscar/js/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'country_state.js' %}"></script>
+<div class="col-sm-12">
+    <div class="well">
+        <form action="{% url 'checkout:billing-address' %}" method="post" id="new_billing_address" class="form form-horizontal">
+            {% csrf_token %}
+            {% include "partials/form_fields.html" with form=form style='horizontal' %}
+
+            <input type="hidden" name="address_id" value="{{ address.id }}" />
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <input type="radio" name="action" value="ship_to" id="ship_to" checked>
+                    <label for="ship_to">ship to this address</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <input type="radio" name="action" value="ship_to_different" id="ship_to_different">
+                    <label for="ship_to_different">ship to different address</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <input type="checkbox" name="default_for_billing" id="default_for_billing">
+                    <label for="default_for_billing">Use this address by default for billing</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" class="btn btn-lg btn-primary" data-loading-text="{% trans 'Continuing...' %}">{% trans "Continue" %}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock shipping_address %}
+
+{% block shipping_method %}{% endblock %}
+{% block payment_method %}{% endblock %}

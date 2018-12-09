@@ -1,0 +1,85 @@
+{% extends 'dashboard/orders/order_detail.html' %}
+{% load i18n %}
+{% load currency_filters %}
+
+
+                {% block tab_payment %}
+
+                    {% if order.billing_address %}
+                        <div class="sub-header">
+                            <h3 >{% trans "Billing address" %}</h3>
+                        </div>
+                        <p>
+                            {% for field in order.billing_address.active_address_fields %}
+                                {{ field }}<br/>
+                            {% endfor %}
+                            {{ order.billing_address.phone_number }}<br/>
+                        </p>
+                    {% endif %}
+
+                    {% with sources=order.sources.all %}
+                        <div class="table-header">
+                            <h3 >{% trans "Payment sources" %}</h3>
+                        </div>
+                        {% if sources %}
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Source" %}</th>
+                                        <th>{% trans "Allocation" %}</th>
+                                        <th>{% trans "Amount debited" %}</th>
+                                        <th>{% trans "Amount refunded" %}</th>
+                                        <th>{% trans "Reference" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for source in sources %}
+                                        <tr>
+                                            <td>{{ source.source_type }}</td>
+                                            <td>{{ source.amount_allocated|currency:order.currency }}</td>
+                                            <td>{{ source.amount_debited|currency:order.currency }}</td>
+                                            <td>{{ source.amount_refunded|currency:order.currency }}</td>
+                                            <td>{{ source.reference|default:"-" }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <table class="table table-striped table-bordered table-hover">
+                                <tr><td>{% trans "No payment sources found for this order." %}</td></tr>
+                            </table>
+                        {% endif %}
+                    {% endwith %}
+
+                    {% block payment_transactions %}
+                        {% if payment_transactions %}
+                            <div class="table-header">
+                                <h3>{% trans "Transactions" %}</h3>
+                            </div>
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>{% trans "Source" %}</th>
+                                        <th>{% trans "Amount" %}</th>
+                                        <th>{% trans "Reference" %}</th>
+                                        <th>{% trans "Status" %}</th>
+                                        <th>{% trans "Date" %}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for txn in payment_transactions %}
+                                        <tr>
+                                            <td>{{ txn.source.source_type }}</td>
+                                            <td>{{ txn.amount|currency:order.currency }}</td>
+                                            <td>{{ txn.reference|default:"-" }}</td>
+                                            <td>{{ txn.status|default:"-" }}</td>
+                                            <td>{{ txn.date_created }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    {% endblock %}
+
+                {% endblock %}
+

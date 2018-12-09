@@ -1,0 +1,8 @@
+{% extends 'checkout/shipping_address.html' %}
+{% load static %}
+
+{% block checkout_nav %}
+    <script src="{% static 'oscar/js/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'country_state.js' %}"></script>
+    {% include 'checkout/nav.html' with step=2 %}
+{% endblock %}

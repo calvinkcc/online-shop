@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load category_tags %}
+
+<style>
+    .list-group .list-group-item a#link1 {
+        padding-left: 5%;
+    }
+    .list-group .list-group-item a#link2 {
+        padding-left: 10%;
+    }
+</style>
+{% category_tree depth=1 as tree_categories %}
+{% if tree_categories %}
+    <h4>{% trans "Show results for" %}</h4>
+    <ul class="list-group">
+        {% for tree_category, info in tree_categories %}
+            <li class="list-group-item">
+                <a href="{{ tree_category.get_absolute_url }}">
+                    {{ tree_category.name }}
+                </a>
+                <a href="#{{tree_category.slug}}" data-toggle="collapse" style="position: absolute;right: 5px;">
+                    <span class="glyphicon glyphicon-chevron-down" style="color:rgb(30,66,120);"></span>
+                </a>
+            </li>
+            <div class="panel-collapse collapse" id="{{ tree_category.slug }}">
+                {% category_tree depth=1 parent=tree_category as tree_categories %}
+                {% if tree_categories %}
+                    <ul class="list-group">
+                        {% for tree_category, info in tree_categories %}
+                            <li class="list-group-item">
+                                <a href="{{ tree_category.get_absolute_url }}" id="link1">
+                                    {{ tree_category.name }}
+                                </a>
+                                <a href="#{{tree_category.slug}}" id="link" data-toggle="collapse" style="position: absolute;right: 5px;">
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                </a>
+                            </li>
+                            <div class="panel-collapse collapse" id="{{ tree_category.slug }}">
+                                {% category_tree depth=1 parent=tree_category as tree_categories %}
+                                {% for tree_category, info in tree_categories %}
+                                    <li class="list-group-item">
+                                        <a href="{{ tree_category.get_absolute_url }}" id="link2">
+                                                {{ tree_category.name }}
+                                            </a>
+                                    </li>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </ul>
+{% endif %}

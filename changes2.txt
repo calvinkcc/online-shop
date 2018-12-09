@@ -8,16 +8,16 @@
         templates/partials/nav_custom.html
         templates/registration/
         yourappsfolder/checkout/admin.py
-        yourappsfolder/checkout/models.py
+        yourappsfolder/checkout/models.py   12/8/2018 changed by kafai, removed email parameter "unique=true"
         yourappsfolder/checkout/views.py
         yourappsfolder/dashboard/views.py
 
 
  /repairestore/settings.py ] + get_core_apps(['yourappsfolder.checkout','yourappsfolder.shipping','yourappsfolder.dashboard'])
- /repairestore/urls.py added url 
+ /repairestore/urls.py added url
  /repairstore/static/oscar/css changes in style.css
  /repairstore/static  added megamenu library for navigation
- /repairstore/yourappsfolder/dashboard  dashboard app override 
+ /repairstore/yourappsfolder/dashboard  dashboard app override
  added a admin.py for getting contact details in database
  used models.py for contact_us page
  created new nav_custom.html in /templates/partials and added in layout and layout1.html
@@ -27,3 +27,62 @@
  made some changes in megamenu css for according to our site navigation bar
 
 
+Added new template file named sidebar.html. It contains collapsing of side navigation bar and some styling.
+Made changes to drop down button color to rgb((30,66,120,1)
+
+Added the python file named app.py for checkout
+Added the IndexView, BillingAddressView classes on checkout/views.py
+
+Added to preview.html in hiddenforms
+<div style="display:none">
+    {% block hiddenforms %}
+        {{ stripe_token_form }}
+    {% endblock %}
+</div>
+
+On views.py follow has been changed: from reverse_lazy('checkout:payment-detail') to reverse_lazy('checkout:payment-method')
+
+All checkout templates shipping_address.html, billing_address.html, shipping_methods.html, payment_details.html, preview.html, thank_you.html, user_address_form.html,
+user_address_delete.html, nav.html have been customized because of the top bar
+
+11/19/18
+Made some CSS changes on  me.css
+forked partner app in order to include strategy.py for tax
+re-wrote shipping methods.py and updated it's repisotory.py
+Made changes to views.py and sessions.py
+
+11/22/18
+Made changes shipping_address.html, billing_adress.html
+checkout/forms.py, views.py, added country.js to static folder
+
+1. default address not working - FIXED
+2. also there is a big problem. the state is not getting saed to the backend for shipping and billing - FIXED
+3. phone number not gettting saved as well. just checked form and views, your not saving the phonenumber part - FIXED
+4. I see the problem, also when your click same information from payment to shipping, the state of the payment doesn't get transferred to shipping - FIXED
+
+Created table address_state.
+Overriden tables order_shippingaddress, order_billingaddress, address_useraddress.
+
+23/11/2018
+1)state field added to address_useraddress.
+2)on billing address and shipping addressses forms state field is selectable dropdawn if country is USA. In other cases it is input text field. static/country_state.js
+4)The overriden tables order_shippingaddress, order_billingaddress, address_useraddress were returned to by default state. address/models.py, order/models.py
+5)The created table address_state was deleted on database.
+
+25/11/2018
+On repairstore/settings.py follow new app 'yourappsfolder.order' has been added to INSTALLED_APPS.
+Created phone_number and notes fields on the table of order_billingaddress.
+Added BillingAddressForm class: checkout/forms.py.
+On checkout/views.py follow has been changed: from get_class("payment.forms", "BillingAddressForm") to get_class("checkout.forms", "BillingAddressForm").
+On checkout/views.py the source code self.checkout_session.bill_to_new_address(billing_address) has been moved from 125 line to 97 line.
+
+
+26/11/2018
+The notes field has been removed from order_billingaddress table: order/models.py
+On checkout/forms.py from attribute of BillingAddressForm.fields has been removed 'notes' item.
+
+28/11/2018
+Added template file to dashboard/orders/order_detail.html
+
+12/5/18
+Added support@kccstech.com email to be the sender of all emails.

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'paypal',
     'stripe',
-] + get_core_apps(['yourappsfolder.checkout','yourappsfolder.shipping','yourappsfolder.dashboard'])
+] + get_core_apps(['yourappsfolder.partner','yourappsfolder.checkout','yourappsfolder.shipping','yourappsfolder.dashboard',
+    'yourappsfolder.order',])
 
 PAYPAL_API_USERNAME = 'calvinkcc0-facilitator_api1.gmail.com'
 PAYPAL_API_PASSWORD = 'JWKASC5LH3K3RB29'
@@ -76,6 +77,7 @@ AUTHENTICATION_BACKENDS = (
     'oscar.apps.customer.auth_backends.EmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
 
 ROOT_URLCONF = 'repairstore.urls'
 
@@ -181,7 +183,13 @@ HAYSTACK_CONNECTIONS = {
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+OSCAR_FROM_EMAIL = 'support@kccstech.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = 'support@kccstech.com'
+EMAIL_HOST_PASSWORD = 'Calvinkcc123!'
+EMAIL_PORT = 587
 
 OSCAR_INITIAL_ORDER_STATUS = 'Pending'
 OSCAR_INITIAL_LINE_STATUS = 'Pending'

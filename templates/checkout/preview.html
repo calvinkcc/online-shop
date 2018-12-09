@@ -2,6 +2,10 @@
 {% load currency_filters %}
 {% load i18n %}
 
+{% block checkout_nav %}
+    {% include 'checkout/nav.html' with step=5 %}
+{% endblock %}
+
 {% block payment_method %}
     <div class="span6">
     <div class="sub-header">
@@ -16,7 +20,8 @@
 </div>
 {% endblock %}
 
-{% block hiddenforms %}
-    {{ bankcard_form.as_p }}
-    {{ billing_address_form.as_p }}
-{% endblock %}
+<div style="display:none">
+    {% block hiddenforms %}
+        {{ stripe_token_form }}
+    {% endblock %}
+</div>

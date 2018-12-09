@@ -54,11 +54,9 @@ a:hover{
 }
 .info-bar-me{
     position: relative;
-    top: 20px;
+    top: 10px;
     background-color: rgba(255,255,255,1);
     height: 140px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     width: 100%;
     transition: all 1s ease 0.25s;
     margin-bottom: 10px !important;

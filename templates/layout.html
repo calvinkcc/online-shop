@@ -26,12 +26,10 @@
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
     <header class="header container-fluid">
-        <div style="margin-bottom:20px;">
             {% include "partials/nav_primary.html" %}
-        </div>
     </header>
 
- <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;") data-spy="affix" data-offset-top="197">
+ <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;">
     <div class="container-fluid">
         <!--<div class="navbar-header pull-right">-->
         <!--    {# This is used in mobile view #}-->
@@ -51,8 +49,6 @@
 <ol class="carousel-indicators" style="position relative; left: 29.75%;">
 <li data-target="#my-pics" data-slide-to="0" class="active"></li>
 <li data-target="#my-pics" data-slide-to="1"></li>
-<li data-target="#my-pics" data-slide-to="2"></li>
-<li data-target="#my-pics" data-slide-to="3"></li>
 </ol>
 
 <!-- Content -->
@@ -60,31 +56,13 @@
 
 <!-- Slide 1 -->
 <div class="item active">
-<a href="/"><img class="img-responsive" src="{% static 'me/KCCS-Ad-SpareParts_1920px.png' %}"></a>
+<a href="/"><img class="img-responsive" src="{% static 'me/KCCS-Ad-SpareParts_1920px.png' %}" alt="Kccs Tech iphone parts image"></a>
 </div>
 
 <!-- Slide 2 -->
 <div class="item">
-<a href=""><img class="img-responsive" src="{% static 'me/KCCS-Ad-WeBuyCracked_1920px.png' %}" alt="Rob Roy Glacier"></a>
+<a href=""><img class="img-responsive" src="{% static 'me/KCCS-Ad-WeBuyCracked_1920px.png' %}" alt="Kccs Tech We buy Cracked screen image"></a>
 <!--<div class="carousel-caption text-left">-->
-<!--                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>-->
-<!--              </div>-->
-</div>
-
-<!-- Slide 3 -->
-<div class="item">
-<a href><img class="img-responsive" src="{% static 'me/service-slide.jpg' %}" alt="Longtail boats at Phi Phi"></a>
-<!--<div class="carousel-caption text-left">-->
-                <!--<h1><strong>YEAAAAAAAAAAAA</strong></h1>-->
-                <!--<h1><strong>FILLERRRRRRRRR</strong></h1>-->
-<!--                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>-->
-<!--              </div>-->
-</div>
-<div class="item">
-<a href><img class="img-responsive" src="{% static 'me/screens.jpg' %}" alt="Longtail boats at Phi Phi"></a>
-<!--<div class="carousel-caption text-left">-->
-                <!--<h1><strong>YEAAAAAAAAAAAA</strong></h1>-->
-                <!--<h1><strong>FILLERRRRRRRRR</strong></h1>-->
 <!--                <p><a class="btn btn-default" href="" role="button">Check out the new arrivals!</a></p>-->
 <!--              </div>-->
 </div>
@@ -109,14 +87,14 @@
         <img src="{% static 'me/delivery-truck.svg' %}" style="height: 50px; width: 50px; text-align:center;">
             <div style="margin-left: 15px;  display:inline-block; vertical-align:middle; text-align:left;">
                 <div style="color:white !important;">SAME DAY SHIPPING FOR US</div>
-                <div style="color:white !important;">free shipping on all orders above $100</div>
+                <div style="color:white !important;">free shipping on all orders above $500</div>
             </div>
     </div>
     <div class="col-md-4" id="padding">
         <img src="{% static 'me/money-back.svg' %}" style="height: 50px; width: 50px; text-align:center;">
             <div style="margin-left: 15px;  display:inline-block; vertical-align:middle; text-align:left;">
                 <div style="color:white !important;">BUY BACK PROGRAM</div>
-                <div style="color:white !important;">Trade in your devices and earn today</div>
+                <div style="color:white !important;">Trade in your Screens/devices and earn today</div>
             </div>
     </div>
     <div class="col-md-4" id="padding">

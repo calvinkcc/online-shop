@@ -25,13 +25,11 @@
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
    <header class="header container-fluid">
-        <div style="margin-bottom:20px;">
         {% block navigation %}
             {% include "partials/nav_primary.html" %}
         {% endblock %}
-        </div>
     </header>
-    <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;") data-spy="affix" data-offset-top="197">
+    <div class="navbar1 primary navbar-static-top" style="background-color: rgba(30,66,120,1) !important;">
             <div class="container-fluid">
                 {% include 'partials/nav_custom.html' %}
             </div>
